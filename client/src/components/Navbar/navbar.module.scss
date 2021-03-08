@@ -1,0 +1,49 @@
+@import '../../THEME.scss';
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    max-width: 370px;
+    // height: 100vh;
+    flex-grow: 1;
+    padding-top: 25px;
+    // padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.link {
+    color: $adminLinkColor;
+    padding: 20px 15px 20px 25px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.4s ease-out;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        color: $mainColor;
+
+        .icon {
+            fill: $mainColor;
+        }
+    }
+}
+
+.active {
+    color: $mainColor;
+    font-weight: bold;
+    background-color: #a1c6fd47;
+
+    .icon {
+        fill: $mainColor;
+    }
+}
+
+.icon {
+    margin-right: 30px;
+    font-size: 1.4rem;
+    width: 26px;
+    height: 26px;
+    transition: all 0.4s ease-out;
+}

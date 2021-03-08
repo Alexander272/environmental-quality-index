@@ -1,0 +1,116 @@
+@import '../../THEME.scss';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.images {
+    max-height: 100px;
+    flex-basis: 30%;
+    max-width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+    flex-basis: 65%;
+    margin-right: 5%;
+}
+
+.cityName {
+    font-size: 2rem;
+    color: $mainColor;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.regionName {
+    padding-left: 10px;
+    margin-bottom: 35px;
+}
+
+.description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item {
+    flex-basis: 30%;
+    margin: 0 1.5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.itemTitle {
+    flex-basis: 100%;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: $mainColor;
+}
+
+.itemImage {
+    margin-right: 5px;
+}
+
+.itemText {
+}
+
+.resultLine {
+    margin: 40px 0;
+    position: relative;
+}
+
+.green {
+    .resultTitle {
+        color: #5f8203;
+    }
+    .line {
+        background-color: #5f8203;
+    }
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // position: relative;
+    // left: 50%;
+    // transform: translateX(-50%);
+}
+
+.resultTitle {
+    color: $mainColor;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.resultBalls {
+}
+
+.borders {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #484848;
+    margin-bottom: 5px;
+}
+
+.lineContainer {
+    background-color: #b5b5b5;
+    background: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 49.48%), rgba(0, 0, 0, 0.15);
+    width: 100%;
+    height: 8px;
+    border-radius: 8px;
+}
+
+.line {
+    background-color: $mainColor;
+    height: 8px;
+    border-radius: 8px;
+    width: 0;
+    transition: all 0.7s ease-in-out;
+}

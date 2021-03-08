@@ -16,7 +16,7 @@ async function bootstrap() {
     app.useGlobalPipes(new ValidationPipe())
     app.use(
         session({
-            name: 'token',
+            name: 'session',
             secret: config.get('sessionSecret'),
             resave: false,
             saveUninitialized: false,

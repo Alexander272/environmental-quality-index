@@ -1,0 +1,105 @@
+@import '../../../THEME.scss';
+
+.title {
+    font-size: 2.3rem;
+    color: $mainColor;
+    margin-bottom: 40px;
+}
+
+.itemList {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid $mainColor;
+    justify-content: space-between;
+    padding: 10px 25px;
+    box-sizing: border-box;
+}
+.bold {
+    margin-top: 5px;
+    text-align: center;
+}
+.icon {
+    border-radius: 50%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.editIcon {
+    background-color: $mainColor;
+    color: #fff;
+}
+.trashIcon {
+    background-color: rgb(241, 54, 21);
+    color: #fff;
+}
+.deleteIcon {
+    pointer-events: none;
+}
+
+.list {
+    color: $mainColor;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.listTitle {
+    padding: 10px;
+    color: $fontColor;
+}
+
+.listVariable {
+    border-top: 1px solid #03e9f4;
+    position: absolute;
+    top: 71px;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    width: 100%;
+    background: darken($color: $mainBody, $amount: 7);
+    padding: 10px 20px 20px;
+    box-sizing: border-box;
+    z-index: 5;
+    height: 151px;
+    overflow-y: auto;
+}
+
+.hidden {
+    height: 0;
+    padding: 0;
+    border: none;
+}
+
+.currentItem {
+    display: flex;
+    cursor: pointer;
+    border-bottom: 1px solid #fff;
+    padding: 10px;
+    justify-content: space-between;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+        background: rgba(#000, 0.1);
+    }
+}
+
+.listIcon {
+    font-size: 1.4rem;
+    margin-right: 30px;
+    transition: all 0.3s ease-out;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.item {
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+
+    &:hover {
+        background: $mainBody;
+        border-bottom-color: #03e9f4;
+    }
+}
