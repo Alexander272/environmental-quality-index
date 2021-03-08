@@ -1,0 +1,6 @@
+{
+    "port": "process.env.port",
+    "mongoUri": "process.env.mongoUri",
+    "sessionSecret": "process.env.sessionSecret",
+    "baseUrl": "process.env.baseUrl"
+}
