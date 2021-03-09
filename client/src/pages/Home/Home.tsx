@@ -1,4 +1,5 @@
 import React from 'react'
+import { CircleBar } from '../../components/CircleBar/CircleBar'
 import { MainLayout } from '../../layout/MainLayout'
 import classes from './home.module.scss'
 
@@ -42,6 +43,37 @@ export const HomePage = () => {
                 </p>
                 <div className={classes.lineContainer}>
                     <div style={{ width: width + '%' }} className={classes.line}></div>
+                </div>
+            </div>
+
+            <div className={classes.categories}>
+                <div className={classes.categoriesItem}>
+                    <CircleBar value={42 / 60} type={42 >= 30 ? 'green' : ''} />
+                    <p className={classes.categoriesTitle}>Жилье и прилегающие пространства</p>
+                </div>
+                <div className={classes.categoriesItem}>
+                    <CircleBar value={35 / 60} type={35 >= 30 ? 'green' : ''} />
+                    <p className={classes.categoriesTitle}>Улично-дорожная сеть</p>
+                </div>
+                <div className={classes.categoriesItem}>
+                    <CircleBar value={21 / 60} type={21 >= 30 ? 'green' : ''} />
+                    <p className={classes.categoriesTitle}>Озелененные пространства</p>
+                </div>
+                <div className={classes.categoriesItem}>
+                    <CircleBar value={27 / 60} type={27 >= 30 ? 'green' : ''} />
+                    <p className={classes.categoriesTitle}>
+                        Общественно-деловая инфраструктура и прилегающие пространства
+                    </p>
+                </div>
+                <div className={classes.categoriesItem}>
+                    <CircleBar value={29 / 60} type={29 >= 30 ? 'green' : ''} />
+                    <p className={classes.categoriesTitle}>
+                        Социально-досуговая инфраструктура и прилегающие пространства
+                    </p>
+                </div>
+                <div className={classes.categoriesItem}>
+                    <CircleBar value={34 / 60} type={34 >= 30 ? 'green' : ''} />
+                    <p className={classes.categoriesTitle}>Общегородское пространство</p>
                 </div>
             </div>
         </MainLayout>

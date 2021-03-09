@@ -1,0 +1,42 @@
+@import '../../THEME.scss';
+
+.bar {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.green {
+    .path {
+        stroke: #5f8203;
+    }
+    .value {
+        fill: #5f8203;
+    }
+}
+
+.svg {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 13%) 0px 4px 23px;
+}
+
+.circle {
+    fill: #fff;
+}
+
+.path {
+    stroke: $mainColor;
+}
+.pathBack {
+    stroke: #eee;
+}
+
+.value {
+    font-size: 2rem;
+    fill: $mainColor;
+}
+.text {
+    fill: #524b4b;
+}
