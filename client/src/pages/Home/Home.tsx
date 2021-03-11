@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { CircleBar } from '../../components/CircleBar/CircleBar'
+import { LineBar } from '../../components/LineBar/LineBar'
 import { MainLayout } from '../../layout/MainLayout'
 import classes from './home.module.scss'
 
@@ -31,32 +33,27 @@ export const HomePage = () => {
                     <img src="/images/Yekaterinburg.png" alt="Yekaterinburg" />
                 </div>
             </div>
-            <div className={[classes.resultLine, classes.green].join(' ')}>
-                <div className={classes.result}>
-                    {/* style={{ left: width + '%' }} */}
-                    <p className={classes.resultTitle}>188</p>
-                    <p className={classes.resultBalls}>баллов</p>
-                </div>
-                <p className={classes.borders}>
-                    <span>0</span>
-                    <span>360</span>
-                </p>
-                <div className={classes.lineContainer}>
-                    <div style={{ width: width + '%' }} className={classes.line}></div>
-                </div>
-            </div>
+            <LineBar
+                value={188}
+                width={width}
+                left={0}
+                right={360}
+                type={width >= 90 ? 'green' : width <= 10 ? 'red' : ''}
+            />
 
             <div className={classes.categories}>
                 <div className={classes.categoriesItem}>
-                    <CircleBar value={42 / 60} type={42 >= 30 ? 'green' : ''} />
-                    <p className={classes.categoriesTitle}>Жилье и прилегающие пространства</p>
+                    <CircleBar value={42 / 60} type={42 >= 50 ? 'green' : 42 <= 10 ? 'red' : ''} />
+                    <Link to={`/categories/${12334}`} className={classes.categoriesTitle}>
+                        Жилье и прилегающие пространства
+                    </Link>
                 </div>
                 <div className={classes.categoriesItem}>
-                    <CircleBar value={35 / 60} type={35 >= 30 ? 'green' : ''} />
+                    <CircleBar value={35 / 60} type={42 >= 50 ? 'green' : 42 <= 10 ? 'red' : ''} />
                     <p className={classes.categoriesTitle}>Улично-дорожная сеть</p>
                 </div>
-                <div className={classes.categoriesItem}>
-                    <CircleBar value={21 / 60} type={21 >= 30 ? 'green' : ''} />
+                {/* <div className={classes.categoriesItem}>
+                    <CircleBar value={21 / 60} type={21 >= 50 ? 'green' : ''} />
                     <p className={classes.categoriesTitle}>Озелененные пространства</p>
                 </div>
                 <div className={classes.categoriesItem}>
@@ -74,7 +71,7 @@ export const HomePage = () => {
                 <div className={classes.categoriesItem}>
                     <CircleBar value={34 / 60} type={34 >= 30 ? 'green' : ''} />
                     <p className={classes.categoriesTitle}>Общегородское пространство</p>
-                </div>
+                </div> */}
             </div>
         </MainLayout>
     )

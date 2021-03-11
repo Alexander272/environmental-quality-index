@@ -1,22 +1,21 @@
 import { Module } from '@nestjs/common'
 import { MongooseModule } from '@nestjs/mongoose'
 import { GraphQLModule } from '@nestjs/graphql'
-// import { ServeStaticModule } from '@nestjs/serve-static'
+import { ServeStaticModule } from '@nestjs/serve-static'
 import { join } from 'path'
 import * as config from 'config'
 
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { UsersModule } from './users/users.module'
-import { AuthModule } from './auth/auth.module'
 
 @Module({
     imports: [
-        // ServeStaticModule.forRoot({
-        //     rootPath: join(__dirname, '..', 'client', 'build'),
-        //     // renderPath: 'app',
-        //     exclude: ['/api*'],
-        // }),
+        ServeStaticModule.forRoot({
+            rootPath: join(__dirname, '..', 'client', 'build'),
+            renderPath: 'app',
+            exclude: ['/api*'],
+        }),
         MongooseModule.forRoot(config.get('mongoUri')),
         GraphQLModule.forRoot({
             installSubscriptionHandlers: true,
@@ -27,7 +26,6 @@ import { AuthModule } from './auth/auth.module'
             path: '/api/graphql',
         }),
         UsersModule,
-        AuthModule,
     ],
     controllers: [AppController],
     providers: [AppService],

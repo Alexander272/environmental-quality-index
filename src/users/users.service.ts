@@ -14,12 +14,33 @@ import { LoginInput } from './dto/login.input'
 export class UsersService {
     constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-    async findOneById(id: string): Promise<UserModel> {
-        return {} as UserModel
+    async findOneById(_id: string): Promise<UserDocument> {
+        return await this.userModel.findById(_id)
+    }
+
+    async findAll(): Promise<UserDocument[]> {
+        return await this.userModel.find().select('_id name email role')
+    }
+
+    getSession(session: Record<string, any>) {
+        if (session.userId)
+            return {
+                id: session.userId,
+                token: session.token,
+                name: session.name,
+                email: session.email,
+                role: session.role,
+            }
+        else return null
+    }
+
+    async removeUser(_id: string): Promise<string> {
+        await this.userModel.findByIdAndDelete(_id)
+        return 'Пользователь успешно удален'
     }
 
     async createUser(newUserInput: NewUserInput): Promise<string> {
-        const { name, email, password } = newUserInput
+        const { name, email, password, role } = newUserInput
         const candidate = await this.userModel.findOne({ email })
         if (candidate) throw new BadRequestException('Такой пользователь уже существует')
         const hasPass = await bcript.hash(password, 15)
@@ -27,7 +48,7 @@ export class UsersService {
             name,
             email,
             password: hasPass,
-            role: 'User',
+            role,
         })
         await user.save()
         return 'Пользователь успешно создан'
@@ -44,15 +65,16 @@ export class UsersService {
                     email,
                     userName: candidate.name,
                     userId: candidate._id,
+                    role: candidate.role,
                 },
                 config.get('sessionSecret'),
                 { expiresIn: 6 * 60 * 60 }
             )
-            console.log(token, 'token')
-            console.log(session, 'session')
             session.token = token
             session.userId = candidate._id
             session.name = candidate.name
+            session.role = candidate.role
+            session.email = candidate.email
 
             return {
                 id: candidate.id,
@@ -62,5 +84,10 @@ export class UsersService {
                 role: candidate.role,
             }
         } else throw new BadRequestException('Введенные данные некорректны')
+    }
+
+    async logout(session: Record<string, any>) {
+        await session.destroy()
+        return 'Успешно'
     }
 }

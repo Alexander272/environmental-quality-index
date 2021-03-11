@@ -1,0 +1,21 @@
+@import '../../THEME.scss';
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.link {
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s all ease-out;
+    font-size: 0.9rem;
+    letter-spacing: 1.1px;
+    color: #000;
+    margin: 0 15px;
+
+    &:hover {
+        color: $mainColor;
+    }
+}

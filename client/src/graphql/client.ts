@@ -5,7 +5,7 @@ const cache = new InMemoryCache()
 export const useApollo = (token: string | null) => {
     const authorization = token ? `Bearer ${token}` : null
     const httpLink = {
-        uri: 'http://localhost:5000/graphql',
+        uri: 'http://localhost:3000/api/graphql',
         headers: {
             authorization,
         },

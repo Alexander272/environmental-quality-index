@@ -8,10 +8,18 @@
 }
 .green {
     .path {
-        stroke: #5f8203;
+        stroke: #46b100;
     }
     .value {
-        fill: #5f8203;
+        fill: #46b100;
+    }
+}
+.red {
+    .path {
+        stroke: #f74626;
+    }
+    .value {
+        fill: #f74626;
     }
 }
 

@@ -1,17 +1,19 @@
 import React from 'react'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch, useSelector } from 'react-redux'
 import { faHome, faSignOutAlt, faUser, faChartBar } from '@fortawesome/free-solid-svg-icons'
+import { logout, userSelectRole } from '../../store/users/userSlice'
 import classes from './navbar.module.scss'
 
 export const Navbar = () => {
-    const role: string = 'admin'
-    const history = useHistory()
+    const dispatch = useDispatch()
+    const role = useSelector(userSelectRole)
 
     const LogoutHandler = async () => {
-        // auth.logout()
-        history.push('/')
+        dispatch(logout())
     }
+
     return (
         <nav className={classes.nav}>
             <NavLink to="/" exact className={classes.link} activeClassName={classes.active}>
@@ -38,6 +40,13 @@ export const Navbar = () => {
                         Назначить показатели
                     </NavLink>
                 </>
+            )}
+
+            {role === 'manager' && (
+                <NavLink to="/users" className={classes.link} activeClassName={classes.active}>
+                    <FontAwesomeIcon className={classes.icon} icon={faUser} />
+                    Отвественные
+                </NavLink>
             )}
 
             {role === 'employee' && (

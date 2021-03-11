@@ -67,12 +67,12 @@ export const AuthPage = () => {
 
     return (
         <div className={[classes.container].join(' ')}>
-            {loading && (
-                <div className={classes.loader}>
-                    <Loader size="md" />
-                </div>
-            )}
             <div className={classes.wrap}>
+                {loading && (
+                    <div className={classes.loader}>
+                        <Loader size="md" />
+                    </div>
+                )}
                 <div className={classes.loginPic}>
                     <img src="/images/authImg.png" alt="auth-img" />
                 </div>

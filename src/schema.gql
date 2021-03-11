@@ -1,0 +1,36 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createUser(newUserInput: NewUserInput!): String!
+  login(loginInput: LoginInput!): UserModel!
+  logout: String!
+  removeUser(id: String!): String!
+}
+
+input NewUserInput {
+  email: String!
+  name: String!
+  password: String!
+  role: String!
+}
+
+type Query {
+  getAllUsers: [UserModel!]!
+  getSession: UserModel!
+  getUser(id: String!): UserModel!
+}
+
+type UserModel {
+  email: String!
+  id: ID!
+  name: String!
+  role: String!
+  token: String!
+}

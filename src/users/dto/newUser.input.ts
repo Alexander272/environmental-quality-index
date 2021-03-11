@@ -14,4 +14,7 @@ export class NewUserInput {
     @Field()
     @Length(6, 30)
     password: string
+
+    @Field()
+    role: string
 }
