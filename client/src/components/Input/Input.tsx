@@ -7,7 +7,7 @@ type Props = {
     value: string
     name: string
     onChange: any
-    className?: any
+    inputType?: any
 }
 
 export const Input: React.FC<Props> = ({
@@ -16,12 +16,12 @@ export const Input: React.FC<Props> = ({
     value,
     onChange,
     name,
-    className = null,
+    inputType = null,
 }) => {
     return (
-        <div className={classes.field}>
+        <div className={[classes.field, inputType ? classes[inputType] : null].join(' ')}>
             <input
-                className={[classes.input, className ? classes[className] : null].join(' ')}
+                className={classes.input}
                 type={type}
                 value={value}
                 onChange={onChange}

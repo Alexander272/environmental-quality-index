@@ -24,6 +24,11 @@ export class UserResolver {
         return await this.usersService.findAll()
     }
 
+    @Query(returns => [UserModel])
+    async getEmployes(): Promise<UserDocument[]> {
+        return await this.usersService.getEmployes()
+    }
+
     @Query(returns => UserModel)
     async getSession(@Context() context: any) {
         const session = this.usersService.getSession(context.req.session)
@@ -52,5 +57,21 @@ export class UserResolver {
         @Context() context: any
     ): Promise<UserModel> {
         return await this.usersService.login(loginInput, context.req.session)
+    }
+
+    @Mutation(returns => String)
+    async updateUser(
+        @Args('id') id: string,
+        @Args('newUserInput') newUserInput: NewUserInput
+    ): Promise<string> {
+        return await this.usersService.updateUser(id, newUserInput)
+    }
+
+    @Mutation(returns => String)
+    async setAccess(
+        @Args('userId') userId: string,
+        @Args('indicator') indicator: string
+    ): Promise<string> {
+        return await this.usersService.setAccess(userId, indicator)
     }
 }

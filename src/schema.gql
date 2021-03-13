@@ -8,26 +8,49 @@ input LoginInput {
 }
 
 type Mutation {
+  addValueIndicator(link: String!, params: Params!): Float!
   createUser(newUserInput: NewUserInput!): String!
   login(loginInput: LoginInput!): UserModel!
   logout: String!
   removeUser(id: String!): String!
+  setAccess(indicator: String!, userId: String!): String!
+  updateUser(id: String!, newUserInput: NewUserInput!): String!
 }
 
 input NewUserInput {
+  access: [String!]!
   email: String!
   name: String!
   password: String!
   role: String!
 }
 
+input Params {
+  par1: String!
+  par10: String
+  par11: String
+  par12: String
+  par13: String
+  par14: String
+  par2: String
+  par3: String
+  par4: String
+  par5: String
+  par6: String
+  par7: String
+  par8: String
+  par9: String
+}
+
 type Query {
   getAllUsers: [UserModel!]!
+  getEmployes: [UserModel!]!
   getSession: UserModel!
   getUser(id: String!): UserModel!
 }
 
 type UserModel {
+  access: [String!]
   email: String!
   id: ID!
   name: String!

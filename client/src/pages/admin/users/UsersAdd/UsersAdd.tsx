@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 import { faAngleDown, faSave } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useMutation } from '@apollo/client'
@@ -8,12 +7,11 @@ import { Input } from '../../../../components/Input/Input'
 import { Toasts } from '../../../../components/Toasts/Toasts'
 import { Loader } from '../../../../components/Loader/Loader'
 import { MainLayout } from '../../../../layout/MainLayout'
-import { userSelectRole } from '../../../../store/users/userSlice'
 import createUser from '../../../../graphql/users/createUser'
+// import { Checkbox } from '../../../../components/Checkbox/Checkbox'
 import classes from '../users.module.scss'
 
 export const UserAddPage = () => {
-    const role = useSelector(userSelectRole)
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState<string | null>(null)
     const [error, setError] = useState<string | null>(null)
@@ -30,8 +28,6 @@ export const UserAddPage = () => {
         manager: 'Руководитель',
         admin: 'Администратор',
     }
-
-    // if (role !== 'admin' && role !== 'owner') return <ErrorLayout />
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [event.target.name]: event.target.value })

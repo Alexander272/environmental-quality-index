@@ -22,6 +22,10 @@ export class UsersService {
         return await this.userModel.find().select('_id name email role')
     }
 
+    async getEmployes(): Promise<UserDocument[]> {
+        return await this.userModel.find({ role: 'employee' })
+    }
+
     getSession(session: Record<string, any>) {
         if (session.userId)
             return {
@@ -30,6 +34,7 @@ export class UsersService {
                 name: session.name,
                 email: session.email,
                 role: session.role,
+                access: session.access,
             }
         else return null
     }
@@ -49,6 +54,7 @@ export class UsersService {
             email,
             password: hasPass,
             role,
+            access: null,
         })
         await user.save()
         return 'Пользователь успешно создан'
@@ -75,6 +81,7 @@ export class UsersService {
             session.name = candidate.name
             session.role = candidate.role
             session.email = candidate.email
+            session.access = candidate.access
 
             return {
                 id: candidate.id,
@@ -82,6 +89,7 @@ export class UsersService {
                 name: candidate.name,
                 email: candidate.email,
                 role: candidate.role,
+                access: candidate.access,
             }
         } else throw new BadRequestException('Введенные данные некорректны')
     }
@@ -89,5 +97,26 @@ export class UsersService {
     async logout(session: Record<string, any>) {
         await session.destroy()
         return 'Успешно'
+    }
+
+    async updateUser(id: string, newUserInput: NewUserInput): Promise<string> {
+        const candidate = await this.userModel.findById(id)
+        const { name, email, password, role } = newUserInput
+        if (password) {
+            const hasPass = await bcript.hash(password, 15)
+            candidate.password = hasPass
+        }
+        candidate.email = email
+        candidate.name = name
+        candidate.role = role
+        await candidate.save()
+        return 'Пользователь успешно обновлен'
+    }
+
+    async setAccess(userId: string, indicator: string): Promise<string> {
+        await this.userModel.findByIdAndUpdate(userId, {
+            $addToSet: { access: indicator },
+        })
+        return 'Показатель успешно назначен'
     }
 }

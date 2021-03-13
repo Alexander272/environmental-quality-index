@@ -9,4 +9,5 @@ export type User = {
     name: string
     role: string
     token: string
+    access?: string[]
 }

@@ -17,4 +17,7 @@ export class NewUserInput {
 
     @Field()
     role: string
+
+    @Field(type => [String])
+    access?: string[]
 }

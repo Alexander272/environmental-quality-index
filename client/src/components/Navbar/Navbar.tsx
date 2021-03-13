@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { faHome, faSignOutAlt, faUser, faChartBar } from '@fortawesome/free-solid-svg-icons'
@@ -8,10 +8,12 @@ import classes from './navbar.module.scss'
 
 export const Navbar = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const role = useSelector(userSelectRole)
 
     const LogoutHandler = async () => {
         dispatch(logout())
+        history.push('/')
     }
 
     return (

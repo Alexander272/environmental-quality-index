@@ -8,6 +8,7 @@ import * as config from 'config'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { UsersModule } from './users/users.module'
+import { IndicatorsModule } from './indicators/indicators.module';
 
 @Module({
     imports: [
@@ -26,6 +27,7 @@ import { UsersModule } from './users/users.module'
             path: '/api/graphql',
         }),
         UsersModule,
+        IndicatorsModule,
     ],
     controllers: [AppController],
     providers: [AppService],

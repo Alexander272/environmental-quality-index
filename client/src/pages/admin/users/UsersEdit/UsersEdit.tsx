@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
 import { faAngleDown, faSave } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useMutation } from '@apollo/client'
+import { useLazyQuery, useMutation } from '@apollo/client'
 import { Button } from '../../../../components/Button/Button'
 import { Input } from '../../../../components/Input/Input'
 import { Toasts } from '../../../../components/Toasts/Toasts'
 import { Loader } from '../../../../components/Loader/Loader'
 import { MainLayout } from '../../../../layout/MainLayout'
-import { userSelectRole } from '../../../../store/users/userSlice'
 import createUser from '../../../../graphql/users/createUser'
 import classes from '../users.module.scss'
+import getUserById from '../../../../graphql/users/getUserById'
+import { useParams } from 'react-router-dom'
 
-export const UserAddPage = () => {
-    const role = useSelector(userSelectRole)
+export const UserEditPage = () => {
+    const [getUser, { data }] = useLazyQuery(getUserById)
+    const id = useParams<{ id: string }>().id
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState<string | null>(null)
     const [error, setError] = useState<string | null>(null)
@@ -31,7 +32,16 @@ export const UserAddPage = () => {
         admin: 'Администратор',
     }
 
-    // if (role !== 'admin' && role !== 'owner') return <ErrorLayout />
+    useEffect(() => {
+        if (!data) {
+            getUser({ variables: { id } })
+            setLoading(true)
+        }
+        if (data) {
+            setForm(data.getUser)
+            setLoading(false)
+        }
+    }, [data, getUser, id])
 
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [event.target.name]: event.target.value })

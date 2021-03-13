@@ -16,6 +16,9 @@ export class User {
 
     @Prop({ required: true })
     role: string
+
+    @Prop({ required: false })
+    access: string[]
 }
 
 export const UserSchema = SchemaFactory.createForClass(User)

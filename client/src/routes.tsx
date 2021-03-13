@@ -6,8 +6,13 @@ import { AuthPage } from './pages/Auth/Auth'
 
 import { CategoriesPage } from './pages/Categories/Categories'
 
+import { IndicatorsPage } from './pages/Indicators/Indicators'
+import { SetIndicatorPage } from './pages/SetIndicator/SetIndicator'
+
 import { UsersPage } from './pages/admin/users/Users/Users'
 import { UserAddPage } from './pages/admin/users/UsersAdd/UsersAdd'
+import { UserEditPage } from './pages/admin/users/UsersEdit/UsersEdit'
+import { IndicatorsPage as AdminIndicators } from './pages/admin/Indicators/Indicators'
 
 export const useRoutes = (role: string | undefined) => {
     switch (role) {
@@ -17,6 +22,9 @@ export const useRoutes = (role: string | undefined) => {
                     <Route path="/" exact>
                         <HomePage />
                     </Route>
+                    <Route path="/admin/indicators" exact>
+                        <AdminIndicators />
+                    </Route>
                     <Route path="/admin/users" exact>
                         <UsersPage />
                     </Route>
@@ -24,7 +32,7 @@ export const useRoutes = (role: string | undefined) => {
                         <UserAddPage />
                     </Route>
                     <Route path="/admin/users/edit/:id" exact>
-                        <UsersPage />
+                        <UserEditPage />
                     </Route>
                     <Route path="*">
                         <PageNotFound />
@@ -51,6 +59,12 @@ export const useRoutes = (role: string | undefined) => {
                 <Switch>
                     <Route path="/" exact>
                         <HomePage />
+                    </Route>
+                    <Route path="/indicators" exact>
+                        <IndicatorsPage />
+                    </Route>
+                    <Route path="/indicators/:indicator" exact>
+                        <SetIndicatorPage />
                     </Route>
                     <Route path="*">
                         <PageNotFound />

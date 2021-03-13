@@ -16,4 +16,7 @@ export class UserModel {
 
     @Field()
     role: string
+
+    @Field(type => [String], { nullable: true })
+    access?: string[]
 }

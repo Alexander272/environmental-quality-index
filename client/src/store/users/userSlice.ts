@@ -14,6 +14,7 @@ type UserState = {
     name: string | undefined
     role: string | undefined
     token: string | null
+    access: string[] | undefined
     exp: number | undefined
 }
 
@@ -25,6 +26,7 @@ const initialState: UserState = {
     name: undefined,
     role: undefined,
     email: undefined,
+    access: undefined,
     exp: undefined,
 }
 
@@ -41,8 +43,10 @@ export const usersSlice = createSlice({
             state.id = action.payload.id
             state.email = action.payload.email
             state.token = action.payload.token
-            state.exp = 6 * 60 * 60 * 1000 // 6 часов
+            state.exp = Date.now() + 6 * 60 * 60 * 1000 // 6 часов
+            if (action.payload.access) state.access = action.payload.access
             state.loading = false
+            autoLogout(state.exp)
         },
         loginFailure: (state, action: PayloadAction<string>) => {
             state.error = action.payload
@@ -54,6 +58,7 @@ export const usersSlice = createSlice({
             state.role = undefined
             state.token = null
             state.email = undefined
+            state.access = undefined
             state.exp = undefined
         },
     },
@@ -111,11 +116,18 @@ export const logout = (): AppThunk => dispatch => {
     }
 }
 
+const autoLogout = (exp: number): AppThunk => dispatch => {
+    setTimeout(() => {
+        if (Date.now() < exp) dispatch(logout())
+    }, 60000)
+}
+
 export const userSelectName = (state: RootState) => state.user.name
 export const userSelectRole = (state: RootState) => state.user.role
 export const userSelectEmail = (state: RootState) => state.user.email
 export const userSelectUserID = (state: RootState) => state.user.id
 export const userSelectToken = (state: RootState) => state.user.token
+export const userSelectAccess = (state: RootState) => state.user.access
 export const userSelectLoading = (state: RootState) => state.user.loading
 export const userSelectError = (state: RootState) => state.user.error
 
