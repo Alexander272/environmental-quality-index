@@ -5,6 +5,7 @@ import { HomePage } from './pages/Home/Home'
 import { AuthPage } from './pages/Auth/Auth'
 
 import { CategoriesPage } from './pages/Categories/Categories'
+import { HistoryPage } from './pages/History/History'
 
 import { IndicatorsPage } from './pages/Indicators/Indicators'
 import { SetIndicatorPage } from './pages/SetIndicator/SetIndicator'
@@ -48,6 +49,9 @@ export const useRoutes = (role: string | undefined) => {
 
                     <Route path="/categories/:id" exact>
                         <CategoriesPage />
+                    </Route>
+                    <Route path="/history/:id" exact>
+                        <HistoryPage />
                     </Route>
                     <Route path="*">
                         <PageNotFound />

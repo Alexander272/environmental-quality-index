@@ -57,12 +57,11 @@ export class IndicatorsService {
     constructor(@InjectModel(Indicator.name) private indicatorModel: Model<IndicatorDocument>) {}
 
     async addValueIndicator(link: string, params: Params): Promise<number> {
-        // let result: number
         const collection = {
             'indicator-1-1': indicatorCalculation1,
             'indicator-1-2': indicatorCalculation2,
             'indicator-1-3': indicatorCalculation3,
-            // 'indicator-1-4': indicatorCalculation4,
+            'indicator-1-4': indicatorCalculation4,
             'indicator-1-5': indicatorCalculation5,
             'indicator-1-6': indicatorCalculation6,
             'indicator-2-1': indicatorCalculation7,

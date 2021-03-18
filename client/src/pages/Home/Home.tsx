@@ -44,34 +44,34 @@ export const HomePage = () => {
             <div className={classes.categories}>
                 <div className={classes.categoriesItem}>
                     <CircleBar value={42 / 60} type={42 >= 50 ? 'green' : 42 <= 10 ? 'red' : ''} />
-                    <Link to={`/categories/${12334}`} className={classes.categoriesTitle}>
+                    <Link to={`/categories/${'indicator-1'}`} className={classes.categoriesTitle}>
                         Жилье и прилегающие пространства
                     </Link>
                 </div>
                 <div className={classes.categoriesItem}>
-                    <CircleBar value={35 / 60} type={42 >= 50 ? 'green' : 42 <= 10 ? 'red' : ''} />
+                    <CircleBar value={35 / 60} type={35 >= 50 ? 'green' : 42 <= 10 ? 'red' : ''} />
                     <p className={classes.categoriesTitle}>Улично-дорожная сеть</p>
                 </div>
-                {/* <div className={classes.categoriesItem}>
-                    <CircleBar value={21 / 60} type={21 >= 50 ? 'green' : ''} />
+                <div className={classes.categoriesItem}>
+                    <CircleBar value={21 / 60} type={21 >= 50 ? 'green' : 42 <= 10 ? 'red' : ''} />
                     <p className={classes.categoriesTitle}>Озелененные пространства</p>
                 </div>
                 <div className={classes.categoriesItem}>
-                    <CircleBar value={27 / 60} type={27 >= 30 ? 'green' : ''} />
+                    <CircleBar value={27 / 60} type={27 >= 50 ? 'green' : 42 <= 10 ? 'red' : ''} />
                     <p className={classes.categoriesTitle}>
                         Общественно-деловая инфраструктура и прилегающие пространства
                     </p>
                 </div>
                 <div className={classes.categoriesItem}>
-                    <CircleBar value={29 / 60} type={29 >= 30 ? 'green' : ''} />
+                    <CircleBar value={29 / 60} type={29 >= 50 ? 'green' : 42 <= 10 ? 'red' : ''} />
                     <p className={classes.categoriesTitle}>
                         Социально-досуговая инфраструктура и прилегающие пространства
                     </p>
                 </div>
                 <div className={classes.categoriesItem}>
-                    <CircleBar value={34 / 60} type={34 >= 30 ? 'green' : ''} />
+                    <CircleBar value={34 / 60} type={34 >= 50 ? 'green' : 42 <= 10 ? 'red' : ''} />
                     <p className={classes.categoriesTitle}>Общегородское пространство</p>
-                </div> */}
+                </div>
             </div>
         </MainLayout>
     )

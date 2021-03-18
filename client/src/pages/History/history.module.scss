@@ -1,0 +1,16 @@
+@import '../../THEME.scss';
+
+.header {
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 2rem;
+    color: $mainColor;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.chart {
+    position: relative;
+}

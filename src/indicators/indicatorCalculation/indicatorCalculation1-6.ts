@@ -79,7 +79,9 @@ export async function indicatorCalculation4(
     params: Params,
     Model: Model<IndicatorDocument>
 ): Promise<number> {
-    const result: number = (+params.par1 / +params.par2) * 100
+    const result: number =
+        ((+params.par1 + +params.par2) / +params.par3) * (+params.par3 / +params.par7) +
+        ((+params.par4 + +params.par5) / +params.par6) * (+params.par6 / +params.par7)
     const indicator = await Model.findOne({
         link,
     })

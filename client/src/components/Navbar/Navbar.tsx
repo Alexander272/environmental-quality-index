@@ -44,12 +44,12 @@ export const Navbar = () => {
                 </>
             )}
 
-            {role === 'manager' && (
+            {/* {role === 'manager' && (
                 <NavLink to="/users" className={classes.link} activeClassName={classes.active}>
                     <FontAwesomeIcon className={classes.icon} icon={faUser} />
                     Отвественные
                 </NavLink>
-            )}
+            )} */}
 
             {role === 'employee' && (
                 <NavLink to="/indicators" className={classes.link} activeClassName={classes.active}>

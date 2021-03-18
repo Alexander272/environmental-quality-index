@@ -7,12 +7,12 @@ import { MainLayout } from '../../layout/MainLayout'
 import { Loader } from '../../components/Loader/Loader'
 import { Input } from '../../components/Input/Input'
 import { Button } from '../../components/Button/Button'
+import { Toasts } from '../../components/Toasts/Toasts'
 import { userSelectAccess } from '../../store/users/userSlice'
 import { IndicatorDataType } from '../../types/indicators'
 import indicatorsData from '../../data/indicatorData.json'
 import addValue from '../../graphql/indicators/addValue'
 import classes from './setIndicator.module.scss'
-import { Toasts } from '../../components/Toasts/Toasts'
 
 export const SetIndicatorPage = () => {
     const { indicator } = useParams<{ indicator: string }>()
