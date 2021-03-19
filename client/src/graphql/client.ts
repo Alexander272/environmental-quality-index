@@ -5,7 +5,7 @@ const cache = new InMemoryCache()
 export const useApollo = (token: string | null) => {
     const authorization = token ? `Bearer ${token}` : null
     const httpLink = {
-        uri: 'http://localhost:3000/api/graphql',
+        uri: `https://environmental-quality-index.herokuapp.com/api/graphql`,
         headers: {
             authorization,
         },
