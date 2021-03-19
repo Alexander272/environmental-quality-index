@@ -10,9 +10,9 @@
         "build": "nest build && npm i --prefix client && npm run build --prefix client",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
         "start": "node dist/main",
-        "start:dev": "nest start --watch",
-        "start:debug": "nest start --debug --watch",
-        "start:prod": "node dist/main",
+        "dev:dev": "nest start --watch",
+        "dev:debug": "nest start --debug --watch",
+        "dev:prod": "node dist/main",
         "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
     },
     "dependencies": {
