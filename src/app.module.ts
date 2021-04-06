@@ -13,7 +13,7 @@ import { IndicatorsModule } from './indicators/indicators.module'
 @Module({
     imports: [
         ServeStaticModule.forRoot({
-            rootPath: join(__dirname, '..', 'client', 'build'),
+            rootPath: join(__dirname, 'client'),
             renderPath: 'app',
             exclude: ['/api*'],
         }),
