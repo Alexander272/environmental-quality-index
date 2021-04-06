@@ -1,6 +1,6 @@
 {
-    "port": "process.env.port",
-    "mongoUri": "process.env.mongoUri",
-    "sessionSecret": "process.env.sessionSecret",
-    "baseUrl": "process.env.baseUrl"
+    "port": "proccess.env.PORT",
+    "mongoUri": "mongodb+srv://Alex:2fQd48Ea5if7KRgL@cluster0.gexu4.mongodb.net/environmentalQualityIndex?retryWrites=true&w=majority",
+    "sessionSecret": "some index secret / starter",
+    "baseUrl": "https://environmental-quality-index.herokuapp.com"
 }
