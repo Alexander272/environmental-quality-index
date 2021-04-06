@@ -26,6 +26,6 @@ async function bootstrap() {
             store,
         })
     )
-    await app.listen(config.get('port'))
+    await app.listen(process.env.PORT || config.get('port'))
 }
 bootstrap()
