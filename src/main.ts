@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core'
-import { ValidationPipe } from '@nestjs/common'
+// import { ValidationPipe } from '@nestjs/common'
 import * as session from 'express-session'
 import * as MongoStore from 'connect-mongodb-session'
 import * as config from 'config'
@@ -13,7 +13,7 @@ const store = new Store({
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule)
-    app.useGlobalPipes(new ValidationPipe())
+    // app.useGlobalPipes(new ValidationPipe())
     app.use(
         session({
             name: 'session',
